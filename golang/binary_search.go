@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func binary_search(list []int, item int) (int, bool) {
 	low := 0
 	high := len(list) - 1
@@ -20,4 +22,15 @@ func binary_search(list []int, item int) (int, bool) {
 	}
 
 	return 0, false
+}
+
+func call_binary_sort() {
+	myList := []int{1, 3, 5, 7, 9}
+
+	if res, exists := binary_search(myList, 9); exists {
+		fmt.Println("Binary search: ", res)
+	} else {
+		fmt.Println("Not found")
+	}
+
 }
