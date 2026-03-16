@@ -24,11 +24,36 @@ func binary_search(list []int, item int) (int, bool) {
 	return 0, false
 }
 
+func binarySerchRec(list []int, item int) (int, bool) {
+	if len(list) == 0 {
+		return 0, false
+	}
+
+	mid := len(list) / 2
+	guess := list[mid]
+
+	if guess == item {
+		return guess, true
+	}
+
+	if guess > item {
+		return binarySerchRec(list[:mid], item)
+	} else {
+		return binarySerchRec(list[mid+1:], item)
+	}
+}
+
 func call_binary_sort() {
 	myList := []int{1, 3, 5, 7, 9}
 
-	if res, exists := binary_search(myList, 9); exists {
-		fmt.Println("Binary search: ", res)
+	// if res, exists := binary_search(myList, 9); exists {
+	// 	fmt.Println("Binary search: ", res)
+	// } else {
+	// 	fmt.Println("Not found")
+	// }
+
+	if res, ok := binarySerchRec(myList, 9); ok {
+		fmt.Println("Binary search Rec: ", res)
 	} else {
 		fmt.Println("Not found")
 	}
