@@ -20,6 +20,22 @@ def binary_search(list: list, item: int) -> int | None:
     
     return None
 
+
+def binary_serch_rec(arr, item):
+    if arr == []:
+        return None
     
+    mid = len(arr) // 2
+    guess = arr[mid]
+
+    if guess == item:
+        return guess
+    
+    if guess > item:
+        return  binary_serch_recursion(arr[:mid], item)
+    else:
+        return  binary_serch_recursion(arr[mid+1:], item)
+
+
 my_list = [1, 3, 5, 7, 9]
 print(binary_search(my_list, 6))
